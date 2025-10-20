@@ -104,10 +104,11 @@ labels2 = plot_3d_clusters(data2, cols2, n_clusters=4, filename="interactive_gra
 
 data2['Cluster'] = labels2
 
-developed = data2[data2['Cluster'].isin([0, 3])]['Country'].tolist()
-developing = data2[data2['Cluster'].isin([1, 2])]['Country'].tolist()
+developing = data2[data2['Cluster'].isin([0, 3])]['Country'].tolist()
+developed = data2[data2['Cluster'].isin([1, 2])]['Country'].tolist()
 
 print("\nDeveloped Countries:", developed)
 print("\nDeveloping Countries:", developing)
+
 
 
