@@ -122,10 +122,3 @@ for name in order:
     countries = data2[data2['Cluster'] == cluster_id]['Country'].tolist()
     print(f"\n{name} :")
     print(countries)
-
-
-
-
-
-
-
