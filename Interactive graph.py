@@ -92,23 +92,37 @@ for cluster_id, cluster_name in cluster_names.items():
 # Data -- Experimentation of a development index
 data2 = pd.read_excel(path + r"\HDI & IHDI.xlsx")
 
-cols2 = [
-    'Gender Inequality Index (GII) - 2022 (formated)',
-    'Human Development Index (HDI) - 2022',
-    'Carbon dioxide emissions (production) index -2021'
-]
-
 plot_elbow(data2, cols2, title="Elbow Method – HDI & IHDI")
+
+cols2 = [
+    'Human Development Index (HDI) - 2022',
+    'Carbon dioxide emissions (production) index -2021',
+    'Gender Inequality Index (GII) - 2022 (formated)'
+]
 
 labels2 = plot_3d_clusters(data2, cols2, n_clusters=4, filename="interactive_graph_2.html")
 
 data2['Cluster'] = labels2
 
-developing = data2[data2['Cluster'].isin([0, 3])]['Country'].tolist()
-developed = data2[data2['Cluster'].isin([1, 2])]['Country'].tolist()
+cluster_names = {
+    0: "Developed countries cat2",
+    1: "Developing countries cat1",
+    2: "Developed countries cat1",
+    3: "Developing countries cat2"
+}
 
-print("\nDeveloped Countries:", developed)
-print("\nDeveloping Countries:", developing)
+order = ["Developed countries cat1", 
+         "Developed countries cat2", 
+         "Developing countries cat1", 
+         "Developing countries cat2"]
+
+for name in order:
+    # Récupérer l'id correspondant à ce nom
+    cluster_id = [k for k, v in cluster_names.items() if v == name][0]
+    countries = data2[data2['Cluster'] == cluster_id]['Country'].tolist()
+    print(f"\n{name} :")
+    print(countries)
+
 
 
 
