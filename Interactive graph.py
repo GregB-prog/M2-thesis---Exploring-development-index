@@ -7,7 +7,7 @@ from sklearn.pipeline import make_pipeline
 import plotly.graph_objs as go
 
 # Data -- HDI
-path = r"C:\Users\gbour\OneDrive\Bureau\master_thesis"
+path = r"C:\Users\gbour\OneDrive\Bureau\master_thesis\dev_index"
 data = pd.read_excel(path + r"\UNDP_HDI.xlsx")
 
 data['Mean years of schooling (2022)'] = data['Mean years of schooling (2022)'].astype(float)
@@ -122,6 +122,7 @@ for name in order:
     countries = data2[data2['Cluster'] == cluster_id]['Country'].tolist()
     print(f"\n{name} :")
     print(countries)
+
 
 
 
